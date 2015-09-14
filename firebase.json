@@ -1,0 +1,9 @@
+{
+  "firebase": "retail-store",
+  "public": "server",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

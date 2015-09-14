@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <base href="/" />
+    <title>Retail Store</title>
+
+    <link rel="icon" type="image/ico" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+
+    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="build.css" />
+    <link rel="stylesheet" type="text/css" href="/xeditable.css" />
+
+
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/angular/angular.js"></script>
+    <script src="/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- Firebase -->
+    <script src="//cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- lodash -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+    <!-- Papa Parse-->
+    <script src="/papaparse.js"></script>
+    <!-- For in-place editing, x-editable-->
+    <script src="/xeditable.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js"></script>    <script src="build.js"></script>
+</head>
+
+<body ng-app="RetailStore">
+    <navbar></navbar>
+    <div ui-view class="container"></div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<section id="home">
+    <h1>Retail Store Product Portal</h1>
+
+    <div class="btn-group">
+        <button class="btn btn-danger" ng-click="clearDb($event)">Clear Database</button>
+        <button class="btn btn-warning" ng-click="seedTests($event)">Seed with 3 Tests</button>
+        <button class="btn btn-success" ng-click="getProductTests($event)">View Product Tests</button>
+    </div>
+
+    <form ng-submit="parseCsvFile()">
+        <div class="form-group">
+            <label for="csvFileUpload">New Products</label>
+            <input type="file" id="csvFileUpload" accept="text/csv">
+
+            <p class="help-block">Note: only accepts CSV files</p>
+            <input class="btn btn-default" type="submit">
+        </div>
+    </form>
+
+    <table st-table="productTestArray" class="table table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Test</th>
+            <th>DateTime</th>
+            <th>Status</th>
+            <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="prodTest in productTestArray">
+            <td onbeforesave="updateItem($data, prodTest.prodId, 'name')" editable-text="prodTest.name">
+                {{prodTest.name}}
+            </td>
+            <td>{{prodTest.test}}</td>
+            <td onbeforesave="updateItem($data, prodTest.prodId, 'dateTime', prodTest.prodTestId)"
+                editable-datetime="prodTest.dateTime">{{prodTest.dateTime | date : 'medium'}}
+            </td>
+            <td onbeforesave="updateItem($data, prodTest.prodId, 'status', prodTest.prodTestId)"
+                editable-text="prodTest.status">{{prodTest.status}}
+            </td>
+            <td onbeforesave="updateItem($data, prodTest.prodId, 'comment', prodTest.prodTestId)"
+                editable-text="prodTest.comment">{{prodTest.comment}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="btn-group">
+        <button class="btn btn-default" ng-click="getFailedTestsThisWeek($event)">Failed in last 7 days</button>
+        <button class="btn btn-default" ng-click="getTests($event, {status: 'pending', daysOlderThan: 3})">Pending & Older than
+            3
+            days
+        </button>
+        <button class="btn btn-default" ng-click="validateProductsWhichAllTestsAreComplete($event)">Validate Products
+            That Have Passed Tests
+        </button>
+    </div>
+
+    <pre>FAILED THIS WEEK: {{failedTestsThisWeek | json}}</pre>
+    <pre>PENDING MORE THAN 3 DAYS {{pendingTests | json}}</pre>
+    <pre>UPDATED PRODUCTS {{updatedProducts | json}}</pre>
+</section>

@@ -1,0 +1,14 @@
+<section id="upload" ng-controller="UploadController">
+    <div class="drop-box col-md-6 col-sm-8 col-xs-12"
+         ngf-drop-available="dropSupported"
+         ngf-drop
+         ngf-select
+         ng-model="files"
+         ngf-change="uploadThis($files)"
+         ngf-drag-over-class="dragover"
+         ngf-multiple="true"
+         ngf-allow-dir="true"
+         ngf-accept="'.csv'">
+        <span>Upload a CSV file of products (or drag and drop)</span>
+    </div>
+</section>

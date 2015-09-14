@@ -1,0 +1,68 @@
+{
+  "products": {
+    "id1": {
+      "name": "Product 1",
+      "manufacturer": "Manu 1",
+      "verfied": false,
+      "tests": [
+        {
+          "name": "1",
+          "dateTime": "",
+          "status": "pending",
+          "comment": "no results"
+        },
+        {
+          "name": "2",
+          "dateTime": "",
+          "status": "pending",
+          "comment": "no results"
+        },
+        {
+          "name": "3",
+          "dateTime": "",
+          "status": "pending",
+          "comment": "no results"
+        }
+      ]
+    },
+    "id2": {
+      "name": "Product 2",
+      "manufacturer": "Manu 2",
+      "verfied": false,
+      "tests": [
+        {
+          "name": "1",
+          "dateTime": "",
+          "status": "pending",
+          "comment": "no results"
+        },
+        {
+          "name": "2",
+          "dateTime": "",
+          "status": "pending",
+          "comment": "no results"
+        },
+        {
+          "name": "3",
+          "dateTime": "",
+          "status": "pending",
+          "comment": "no results"
+        }
+      ]
+    }
+  },
+  "tests": {
+    "id1": {
+      "name": "coloring",
+      "description": "product has correct coloring"
+    },
+    "id2": {
+      "name": "dropOneMeter",
+      "description": "survives fall from 1 meter"
+    },
+    "id3":{
+      "name": "packaging",
+      "description": "product is packaged correctly"
+    }
+  }
+}
