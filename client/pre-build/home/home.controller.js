@@ -1,24 +1,18 @@
 app.controller('HomeController', function ($scope, HomeFactory) {
     $scope.seedTests = function ($event) {
-        if ($event.stopPropagation) $event.stopPropagation();
-        if ($event.preventDefault) $event.preventDefault();
-        $event.cancelBubble = true;
+
         HomeFactory.seedTests();
     };
 
     $scope.clearDb = function ($event) {
-        if ($event.stopPropagation) $event.stopPropagation();
-        if ($event.preventDefault) $event.preventDefault();
-        $event.cancelBubble = true;
+
         HomeFactory.clearDbSection('tests');
         HomeFactory.clearDbSection('products');
         HomeFactory.clearDbSection('product_tests');
     };
 
     $scope.parseCsvFile = function ($event) {
-        if ($event.stopPropagation) $event.stopPropagation();
-        if ($event.preventDefault) $event.preventDefault();
-        $event.cancelBubble = true;
+
         var file = document.getElementById('csvFileUpload').files[0];
         if (!file) return console.log("No file selected");
 
@@ -64,9 +58,6 @@ app.controller('HomeController', function ($scope, HomeFactory) {
         if (itemToUpdate === 'name') {
             ref.child('products/' + prodId).update({name: update});
         } else {
-            if (itemToUpdate === 'dateTime') {
-                console.log(update)
-            }
             var updateObject = {};
             updateObject[itemToUpdate] = update;
             ref.child('product_tests/' + prodId).child(prodTestId).update(updateObject);
@@ -94,9 +85,7 @@ app.controller('HomeController', function ($scope, HomeFactory) {
     }());
     // get tests with query definition object
     $scope.getTests = function ($event, query) {
-        if ($event.stopPropagation) $event.stopPropagation();
-        if ($event.preventDefault) $event.preventDefault();
-        $event.cancelBubble = true;
+
         var status = query.status;
         var daysInMilliSeconds = (query.daysOlderThan * 86400000).toString();
 
@@ -115,9 +104,7 @@ app.controller('HomeController', function ($scope, HomeFactory) {
     };
     // Update products if tests are passed, and return a list if updated
     $scope.validateProductsWhichAllTestsAreComplete = function ($event) {
-        if ($event.stopPropagation) $event.stopPropagation();
-        if ($event.preventDefault) $event.preventDefault();
-        $event.cancelBubble = true;
+
         var ref = new Firebase('https://retail-store.firebaseio.com/');
         var temp = [];
         ref.child('product_tests').once('value', function (products) {
@@ -130,7 +117,9 @@ app.controller('HomeController', function ($scope, HomeFactory) {
                     prodRef.update({'state': 'verified'}, function (err) {
                         if (err) console.error("Error: ", err);
                         prodRef.on('value', function (updatedProd) {
+                            // Left here on purpose
                             console.log(updatedProd.val());
+                            return updatedProd.val();
                         });
                     });
                 }
